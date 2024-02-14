@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <style>
+.button{
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+    padding: 20px; /* Padding to prevent the button from sticking to the edge */
+
+}
+
+
+.cool-add-btn {
+    
+    background-color: #ADD8E6; /* Light blue background */
+    color: #FFFFFF; /* White text color */
+    border: none; /* No border */
+    padding: 10px 25px; /* Ample padding for a larger, rounded button */
+    font-size: 18px; /* Larger font size */
+    font-weight: bold; /* Bold font weight */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    transition: background-color 1s, transform 1s; /* Smooth transition for background color and zoom */
+    border-radius: 30px; /* Fully rounded edges */
+    outline: none; /* Remove outline to keep the style neat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.cool-add-btn:hover {
+    background-color: #90EE90; /* Light green background */
+    transform: scale(1.1); /* Slightly larger zoom to make it pop */
+}
+
+
+    </style>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Company name</th>
+            <th scope="col">KeyID</th>
+            <th scope="col">Individual Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Linked In</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Source of Phone Number</th>
+            <th scope="col">Source of infromation</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for c in contact%}
+          <tr>
+            <th scope="row">{{forloop.count}}</th>
+            <a href="{% url 'home'%}"></a><td>{{c.company.name}}</td>
+            <td>{{c.company.keyid}}</td>
+            <td>{{c.individuals_name}}</td>
+            <td>{{c.position}}</td>
+            <td>{{c.linked_in}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.phone_number}}</td>
+            <td>{{c.so_phone_number}}</td>
+            <td>{{c.so_information}}</td>
+            <td>{{c.updated}}</td>
+            <td>{{c.created}}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    <div class="button">
+        <a href="{% url 'coform'%}"><button class="cool-add-btn">Add</button></a>
+
+    </div>
+</body>
+</html>
