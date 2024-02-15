@@ -5,7 +5,13 @@ from .views import *
 urlpatterns = [
     path('', home , name = 'home'),
     path('cpform/', cpform , name = 'cpform'),
-    path('contact/', contact , name = 'contact'),
-    path('coform/', coform , name = 'coform')
+    path('contact/<int:pk>/', contact , name = 'contact'),
+    # urls.py
+    path('coform/<int:company_id>/', coform, name='coform'),
+
+    path('coform_update/<str:pk>/', coform_update , name = 'coform_update'),
+    path('cpform_update/<str:pk>/', cpform_update , name = 'cpform_update'),
+    path('company_delete/<str:pk>/', company_delete , name = 'company_delete')
+
 
 ]

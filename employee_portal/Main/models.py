@@ -21,7 +21,7 @@ class company(models.Model):
         return self.name
     
 class contact_info(models.Model):
-    comapny = models.ForeignKey(company, on_delete=models.SET_NULL, null = True, blank = True)
+    company = models.ForeignKey(company, on_delete=models.SET_NULL, null = True, blank = True)
     individuals_name = models.CharField(max_length = 100)
     position = models.CharField(max_length = 100)
     linked_in = models.CharField(max_length = 100)
@@ -34,4 +34,5 @@ class contact_info(models.Model):
     class Meta:
         ordering = ['-updated', '-created']
     def __str__(self):
-        return self.company.name + '-' + self.individuals_name
+        company_name = self.company.name if self.company else "No Company"
+        return f'{company_name}-{self.individuals_name}'

@@ -39,6 +39,8 @@
 
 
     </style>
+
+<p>Total Companies: {{ company.count }}</p>
     <table class="table">
         <thead>
           <tr>
@@ -53,10 +55,12 @@
             {% for c in company%}
           <tr>
             <th scope="row">{{forloop.count}}</th>
-           <td> <a href="{% url 'contact'%}">{{c.name}}</a></td>
+           <td> <a href="{% url 'contact' c.id%}">{{c.name}}</a></td>
             <td>{{c.keyid}}</td>
             <td>{{c.catagory}}</td>
             <td>{{c.created}}</td>
+            <td><a href="{% url 'cpform_update' c.id%}">Update</a></td>
+            <td><a href="{% url 'company_delete' c.id%}">Delete</a></td>
 
           </tr>
           {% endfor %}

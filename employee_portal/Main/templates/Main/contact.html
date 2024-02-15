@@ -55,7 +55,7 @@
           </tr>
         </thead>
         <tbody>
-            {% for c in contact%}
+            {% for c in contacts%}
           <tr>
             <th scope="row">{{forloop.count}}</th>
             <a href="{% url 'home'%}"></a><td>{{c.company.name}}</td>
@@ -69,6 +69,7 @@
             <td>{{c.so_information}}</td>
             <td>{{c.updated}}</td>
             <td>{{c.created}}</td>
+            <td><a href="{% url 'coform_update' c.id%}">Update</a></td>
             
           </tr>
           {% endfor %}
@@ -76,7 +77,7 @@
       </table>
 
     <div class="button">
-        <a href="{% url 'coform'%}"><button class="cool-add-btn">Add</button></a>
+        <a href="{% url 'coform' company_id %}"><button class="cool-add-btn">Add</button></a>
 
     </div>
 </body>
