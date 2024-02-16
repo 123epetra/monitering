@@ -36,3 +36,4 @@ class contact_info(models.Model):
     def __str__(self):
         company_name = self.company.name if self.company else "No Company"
         return f'{company_name}-{self.individuals_name}'
+    

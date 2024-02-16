@@ -1,6 +1,7 @@
 from django.shortcuts import render ,redirect ,get_object_or_404
 from .models import *
 from .forms import *
+from django.utils import timezone
 
 # Create your views here.
 def home (request):
@@ -39,8 +40,8 @@ def coform(request, company_id=None):
     if request.method == 'POST':
         form = contact_form(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect(request.META.get('HTTP_REFERER', 'home'))
+            saved_contact = form.save()
+            return redirect('contact', pk = saved_contact.company.id)
     context = {'form': form}
     return render(request, 'Main/coform.html', context)
 
@@ -54,6 +55,13 @@ def contact(request,pk):
 
     context = {'contacts':contacts, 'company_id':pk}
     return render (request, 'Main/contact.html', context)
+def contact_delete(request,pk):
+    contact = get_object_or_404(contact_info, id=pk)
+    company_id = contact.company.id 
+    if request.method == 'POST':
+        contact.delete()
+        return redirect ('contact', pk = company_id)
+    return render (request, 'Main/delete.html')
 def company_delete(request,pk):
     companies= company.objects.get(id=pk)
     if request.method == 'POST':

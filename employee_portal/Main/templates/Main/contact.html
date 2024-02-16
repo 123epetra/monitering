@@ -52,6 +52,8 @@
             <th scope="col">Phone Number</th>
             <th scope="col">Source of Phone Number</th>
             <th scope="col">Source of infromation</th>
+            <th scope="col">U Time</th>
+            <th scope="col">C Time</th>
           </tr>
         </thead>
         <tbody>
@@ -70,6 +72,7 @@
             <td>{{c.updated}}</td>
             <td>{{c.created}}</td>
             <td><a href="{% url 'coform_update' c.id%}">Update</a></td>
+            <td><a href="{% url 'contact_delete' c.id%}">Delete</a></td>
             
           </tr>
           {% endfor %}

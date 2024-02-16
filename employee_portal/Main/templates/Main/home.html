@@ -48,7 +48,11 @@
             <th scope="col">Company name</th>
             <th scope="col">KeyID</th>
             <th scope="col">Catagory</th>
+            <th scope="col">Description</th>
+            <th scope="col">Company Description</th>
+            <th scope="col">Website</th>
             <th scope="col">C Time</th>
+            <th scope="col">U Time</th>
           </tr>
         </thead>
         <tbody>
@@ -58,7 +62,11 @@
            <td> <a href="{% url 'contact' c.id%}">{{c.name}}</a></td>
             <td>{{c.keyid}}</td>
             <td>{{c.catagory}}</td>
+            <td>{{c.description}}</td>
+            <td>{{c.company_description}}</td>
+            <td>{{c.website_link}}</td>
             <td>{{c.created}}</td>
+            <td>{{c.updated}}</td>
             <td><a href="{% url 'cpform_update' c.id%}">Update</a></td>
             <td><a href="{% url 'company_delete' c.id%}">Delete</a></td>
 
@@ -71,5 +79,6 @@
         <a href="{% url 'cpform'%}"><button class="cool-add-btn">Add</button></a>
 
     </div>
+    
 </body>
 </html>
